@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+body{
+  @apply text-gray-700 bg-customcolor-100
+}
+.hover_increase{
+  @apply transform  transition ease-out duration-300
+}
+.hover_increase:hover{
+  @apply scale-105 shadow-md
+}
+
+@tailwind utilities;
