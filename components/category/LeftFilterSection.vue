@@ -59,8 +59,33 @@
       <input type="checkbox" /><a href="" class="text-sm font-bold"> SAMSANG</a>
     </div>
     <div class="mt-4">
-      <h1 class="text-base font-bold">Price</h1>
-      <input type="range" min="500" max="10000" name="" id="" class="w-full" />
+      <h1 class="text-base font-bold">Price : {{ form.price }}</h1>
+      <input
+        type="range"
+        min="500"
+        max="10000"
+        name=""
+        id=""
+        v-model="form.price"
+        class="w-full"
+        @change="prouctPrice()"
+      />
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      form: {
+        price: ""
+      }
+    };
+  },
+  methods: {
+    prouctPrice() {
+      console.log(this.form.price);
+    }
+  }
+};
+</script>

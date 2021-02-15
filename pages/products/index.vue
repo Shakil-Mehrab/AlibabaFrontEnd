@@ -8,6 +8,11 @@
         class="w-9/12 ml-1 sm:ml-5 border-l border-customcolor-300 pl-1 sm:pl-5"
       >
         <RightListSection :products="products" />
+        <Pagination
+          v-if="meta.current_page"
+          :meta="meta"
+          @pagination:switched="paginationSwitched"
+        />
       </div>
     </div>
   </div>
@@ -15,11 +20,13 @@
 <script>
 import LeftFilterSection from "@/components/category/LeftFilterSection";
 import RightListSection from "@/components/category/RightListSection";
+import Pagination from "@/components/pagination/Pagination";
 
 export default {
   components: {
     LeftFilterSection,
-    RightListSection
+    RightListSection,
+    Pagination
   },
   async asyncData({ query, app }) {
     console.log(`products?per-page=9`, {
