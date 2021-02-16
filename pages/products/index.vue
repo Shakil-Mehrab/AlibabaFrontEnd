@@ -29,13 +29,7 @@ export default {
     Pagination
   },
   async asyncData({ query, app }) {
-    console.log(`products?per-page=9`, {
-      params: {
-        page: query.page,
-        ...query
-      }
-    });
-    let productsResponse = await app.$axios.$get(`products?per-page=9`, {
+    let productsResponse = await app.$axios.$get(`products?per-page=2`, {
       params: {
         ...query
       }
@@ -44,6 +38,39 @@ export default {
       products: productsResponse.data,
       meta: productsResponse.meta
     };
+  },
+  watch: {
+    "$route.query"(query) {
+      this.getCategoryProducts(1, query);
+    }
+  },
+  methods: {
+    async getCategoryProducts(
+      page = this.$route.query.page,
+      query = this.$route.query
+    ) {
+      await this.$axios
+        .$get(`products?per-page=2`, {
+          params: {
+            page,
+            ...query
+          }
+        })
+        .then(response => {
+          this.products = response.data;
+          this.meta = response.meta;
+        });
+    },
+
+    // async getCategoryMeta(category) {
+    //   let response = await this.$axios.get(`categories/${category}`);
+
+    //   this.char.title = response.data.data.name;
+    // },
+
+    async paginationSwitched() {
+      // this.$scrollTo(".content-bg");
+    }
   }
 };
 </script>

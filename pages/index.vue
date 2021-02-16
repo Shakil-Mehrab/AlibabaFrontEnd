@@ -15,7 +15,7 @@
           <div class="flex flex-wrap">
             <MainSlider />
             <TrendingConsumer
-              endpoints="products?categories=richie&per-page=12"
+              endpoints="products?categories=norwood&per-page=12"
             />
           </div>
         </div>
@@ -126,7 +126,3 @@ export default {
   }
 };
 </script>
-
-
-
-
